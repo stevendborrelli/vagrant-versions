@@ -1,0 +1,13 @@
+{
+  "name": "vagrant-checksums",
+  "version": "0.1.0",
+  "author": "Steven Borrelli <steve@borrelli.org>",
+  "description": "generate checksums for vagrant binary releases",
+
+   "dependencies" : {
+    "cheerio"   :  "*",
+    "request"   :  "*"
+  }
+}
+
+
