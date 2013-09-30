@@ -6,9 +6,14 @@ var argv = require("optimist")
    .default('tagpath', '/tags/') 
    .argv; 
 
-var request = require("request");
-var cheerio = require("cheerio");
+var request = require("request")
+  , cheerio = require("cheerio")
+  , crypto =  require("crypto")
+  , fs     =  require("fs"); 
 
+
+// This will pull all the available tags from the 
+// vagrantup downloads site
 function get_tags(url) {
         request(url, function(err, resp, body) {
            var t = [];
@@ -30,8 +35,10 @@ function get_package_info(url, tag){
         u = url + tag;
         console.log(u);
         request(url + tag, function(err, resp, body) {
-        $ = cheerio.load(body); 
-        console.log(body); 
+          $ = cheerio.load(body);
+          $('a.file').each( function(file) {
+             console.log($(this).attr('href'));
+          });
         }); 
 
 };
