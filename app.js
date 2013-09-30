@@ -1,9 +1,12 @@
-var optimist = require("optimist");
+var argv = require("optimist")
+   .default('url', 'http://downloads.vagrantup.com')
+   .default('file', 'checksums.json')
+   .argv; 
+
 var request = require("request");
 var cheerio = require("cheerio");
 
 
-var url = 'http://downloads.vagrantup.com' 
 
 var tags = []; 
 
@@ -35,5 +38,5 @@ function get_package_info(url, tag){
 }; 
 
 
-get_tags(url);
+get_tags(argv.url);
 //console.log(tags); 
