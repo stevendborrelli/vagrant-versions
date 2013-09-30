@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "author": "Steven Borrelli <steve@borrelli.org>",
   "description": "generate checksums for vagrant binary releases",
-
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stevendborrelli/vagrant-checksums"
+  },
    "dependencies" : {
     "cheerio"   :  "*",
     "optimist"  :  "*",
