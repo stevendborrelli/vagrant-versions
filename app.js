@@ -1,3 +1,5 @@
+"use strict"; 
+
 var argv = require("optimist")
    .boolean(['fetchtags'])
    .default('url', 'http://downloads.vagrantup.com')
@@ -19,7 +21,7 @@ function get_tags(url) {
            var t = [];
            if (err)
              throw err; 
-           $ = cheerio.load(body);
+           var $ = cheerio.load(body);
            //console.log(body);
            $('a.tag').each(function(tag) {
               //console.log(tag);
@@ -32,10 +34,8 @@ function get_tags(url) {
 };
 
 function get_package_info(url, tag){
-        u = url + tag;
-        console.log(u);
         request(url + tag, function(err, resp, body) {
-          $ = cheerio.load(body);
+          var $ = cheerio.load(body);
           $('a.file').each( function(file) {
              console.log($(this).attr('href'));
           });
@@ -45,7 +45,6 @@ function get_package_info(url, tag){
 
 if (argv.fetchtags) { 
     get_tags(argv.url); 
-} else
-{
+} else {
     get_package_info(argv.url + argv.tagpath , argv.tag);
 }
